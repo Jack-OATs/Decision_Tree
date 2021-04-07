@@ -2,6 +2,7 @@ import numpy as np
 import utilities
 from decision_trees import DecisionTree, OutcomeMetrics
 
+
 def run_test_data_on_tree():
     dataset = utilities.load_csv('Student Data.csv')
     print("---------------")
@@ -19,11 +20,12 @@ def run_test_data_on_tree():
         tree = DecisionTree()
         tree.fit(train_features, train_classes)
         output = tree.classify(test_features)
-        accuracies.append(OutcomeMetrics.accuracy(output, test_classes))
-        precisions.append(OutcomeMetrics.precision(output, test_classes))
-        recalls.append(OutcomeMetrics.recall(output, test_classes))
-        confusion.append(OutcomeMetrics.get_confustion_matrix(output, test_classes))
+        outcomes = OutcomeMetrics(output, test_classes)
+        accuracies.append(outcomes.accuracy())
+        precisions.append(outcomes.precision())
+        recalls.append(outcomes.recall())
+        confusion.append(outcomes.get_confustion_matrix())
 
-    print("tree average = " + str(np.average(accuracies)))
+    print("trees average = " + str(np.average(accuracies)))
 
 run_test_data_on_tree()
