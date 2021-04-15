@@ -51,3 +51,4 @@ Thumbs.db
 Lib/
 Scripts/
 pyvenv.cfg
+scrap.py
