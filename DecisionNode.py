@@ -2,13 +2,18 @@ class DecisionNode():
     """Class to represent a single node in
     a decision tree."""
 
-    def __init__(self, left, right, decision_function, class_label=None):
+    def __init__(self, left, right, decision_function_info, class_label=None):
         """Create a node with a left child, right child,
         decision function and optional class label
-        for leaf nodes."""
+        for leaf nodes.
+        decision_function_info = (decision_function, func_val, func_feature_index) where
+          decision_function is the function to split on
+          func_val is the threshold value for the function to split at
+          func_feature_index is the index of the feature (or column) to split on
+        """
         self.left = left
         self.right = right
-        self.decision_function = decision_function
+        self.decision_function, self.func_val, self.func_feature_index = decision_function_info
         self.class_label = class_label
 
     def decide(self, feature):
