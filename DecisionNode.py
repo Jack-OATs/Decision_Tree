@@ -16,7 +16,7 @@ class DecisionNode():
         if type(decision_function_info) is tuple:
             self.decision_function, self.func_val, self.func_feature_index = decision_function_info
         else:
-            self.decision_function = decision_function_info
+            self.decision_function, self.func_val, self.func_feature_index = decision_function_info, None, None
         self.class_label = class_label
 
     def decide(self, feature):
@@ -26,7 +26,14 @@ class DecisionNode():
         function)."""
         if self.class_label is not None:
             return self.class_label
-        elif self.decision_function(feature):
-            return self.left.decide(feature)
         else:
-            return self.right.decide(feature)
+            if self.func_val is None:
+                if self.decision_function(feature):
+                    return self.left.decide(feature)
+                else:
+                    return self.right.decide(feature)
+            else:
+                if self.decision_function(feature, self.func_val, self.func_feature_index):
+                    return self.left.decide(feature)
+                else:
+                    return self.right.decide(feature)
