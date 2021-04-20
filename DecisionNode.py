@@ -13,7 +13,10 @@ class DecisionNode():
         """
         self.left = left
         self.right = right
-        self.decision_function, self.func_val, self.func_feature_index = decision_function_info
+        if type(decision_function_info) is tuple:
+            self.decision_function, self.func_val, self.func_feature_index = decision_function_info
+        else:
+            self.decision_function = decision_function_info
         self.class_label = class_label
 
     def decide(self, feature):
