@@ -50,5 +50,6 @@ Thumbs.db
 
 Lib/
 Scripts/
+venv/
 pyvenv.cfg
 scrap.py
