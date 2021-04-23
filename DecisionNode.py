@@ -33,6 +33,7 @@ class DecisionNode():
                 else:
                     return self.right.decide(feature)
             else:
+                # print("feature = {}\nfunc val = {}\nind = {}".format(feature, self.func_val, self.func_feature_index))
                 if self.decision_function(feature, self.func_val, self.func_feature_index):
                     return self.left.decide(feature)
                 else:

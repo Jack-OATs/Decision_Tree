@@ -1,6 +1,6 @@
 import numpy as np
-import utilities
-from decision_trees import DecisionTree, OutcomeMetrics
+from decisiontree import utilities
+from decisiontree.decision_trees import DecisionTree, OutcomeMetrics
 
 
 def run_test_data_on_tree():
@@ -27,5 +27,6 @@ def run_test_data_on_tree():
         confusion.append(outcomes.get_confustion_matrix())
 
     print("trees average = " + str(np.average(accuracies)))
+
 
 run_test_data_on_tree()
